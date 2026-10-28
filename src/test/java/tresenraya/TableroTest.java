@@ -47,7 +47,7 @@ class TableroTest {
     }
 
     @Test
-    void siguienteTurno_despuesDeX_esO() {
+    void siguienteTurno_despuesDeX_esMas() {
         Tablero tablero = new Tablero();
         tablero.colocarPieza(0, 0, 'X');
 
@@ -79,6 +79,18 @@ class TableroTest {
         tablero.colocarPieza(0, 1, 'X');
         tablero.colocarPieza(1, 1, '+');
         tablero.colocarPieza(0, 2, 'X');
+
+        assertEquals('X', tablero.ganador());
+    }
+    
+    @Test
+    void hayGanador_lineaVerticalX_gana() {
+        Tablero tablero = new Tablero();
+        tablero.colocarPieza(0, 0, 'X');
+        tablero.colocarPieza(0, 1, '+');
+        tablero.colocarPieza(1, 0, 'X');
+        tablero.colocarPieza(1, 1, '+');
+        tablero.colocarPieza(2, 0, 'X');
 
         assertEquals('X', tablero.ganador());
     }

@@ -32,6 +32,14 @@ public class Tablero {
                 return primera;
             }
         }
+        for (int columna = 0; columna < 3; columna++) {
+            char primera = casillas[0][columna];
+            if (primera != '\0'
+                    && primera == casillas[1][columna]
+                    && primera == casillas[2][columna]) {
+                return primera;
+            }
+        }
         return null;
     }
 }
