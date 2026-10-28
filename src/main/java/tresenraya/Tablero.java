@@ -24,6 +24,14 @@ public class Tablero {
     }
 
     public Character ganador() {
+        for (int fila = 0; fila < 3; fila++) {
+            char primera = casillas[fila][0];
+            if (primera != '\0'
+                    && primera == casillas[fila][1]
+                    && primera == casillas[fila][2]) {
+                return primera;
+            }
+        }
         return null;
     }
 }

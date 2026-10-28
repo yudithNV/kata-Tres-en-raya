@@ -1,10 +1,10 @@
 package tresenraya;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
 
 class TableroTest {
 
@@ -70,5 +70,16 @@ class TableroTest {
         tablero.colocarPieza(1, 1, '+');
 
         assertNull(tablero.ganador());
+    }
+    @Test
+    void hayGanador_lineaHorizontalX_gana() {
+        Tablero tablero = new Tablero();
+        tablero.colocarPieza(0, 0, 'X');
+        tablero.colocarPieza(1, 0, '+');
+        tablero.colocarPieza(0, 1, 'X');
+        tablero.colocarPieza(1, 1, '+');
+        tablero.colocarPieza(0, 2, 'X');
+
+        assertEquals('X', tablero.ganador());
     }
 }
