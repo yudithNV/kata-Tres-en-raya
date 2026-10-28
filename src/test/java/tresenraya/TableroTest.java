@@ -28,4 +28,12 @@ class TableroTest {
 
         assertDoesNotThrow(() -> tablero.colocarPieza(1, 1, 'X'));
     }
+    @Test
+    void colocarPieza_posicionOcupada_lanzaExcepcion() {
+        Tablero tablero = new Tablero();
+        tablero.colocarPieza(1, 1, 'X');
+
+        assertThrows(IllegalArgumentException.class,
+                () -> tablero.colocarPieza(1, 1, 'O'));
+    }
 }
