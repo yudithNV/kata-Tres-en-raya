@@ -23,34 +23,31 @@ public class Tablero {
         return 'X';
     }
 
-        public Character ganador() {
+    /***
+     * Devuelve el ganador de la partida, si hay uno.
+     * @return el ganador, o null si no hay ninguno.
+     */
+    public Character ganador() {
         for (int fila = 0; fila < 3; fila++) {
-            char primera = casillas[fila][0];
-            if (primera != '\0'
-                    && primera == casillas[fila][1]
-                    && primera == casillas[fila][2]) {
-                return primera;
+            if (lineaCompleta(casillas[fila][0], casillas[fila][1], casillas[fila][2])) {
+                return casillas[fila][0];
             }
         }
         for (int columna = 0; columna < 3; columna++) {
-            char primera = casillas[0][columna];
-            if (primera != '\0'
-                    && primera == casillas[1][columna]
-                    && primera == casillas[2][columna]) {
-                return primera;
+            if (lineaCompleta(casillas[0][columna], casillas[1][columna], casillas[2][columna])) {
+                return casillas[0][columna];
             }
         }
-        char centro = casillas[1][1];
-        if (centro != '\0'
-                && centro == casillas[0][0]
-                && centro == casillas[2][2]) {
-            return centro;
+        if (lineaCompleta(casillas[0][0], casillas[1][1], casillas[2][2])) {
+            return casillas[1][1];
         }
-        if (centro != '\0'
-                && centro == casillas[0][2]
-                && centro == casillas[2][0]) {
-            return centro;
+        if (lineaCompleta(casillas[0][2], casillas[1][1], casillas[2][0])) {
+            return casillas[1][1];
         }
         return null;
+    }
+
+    private boolean lineaCompleta(char a, char b, char c) {
+        return a != '\0' && a == b && a == c;
     }
 }
