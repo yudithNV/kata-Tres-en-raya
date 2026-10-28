@@ -1,6 +1,7 @@
 package tresenraya;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +35,30 @@ class TableroTest {
         tablero.colocarPieza(1, 1, 'X');
 
         assertThrows(IllegalArgumentException.class,
-                () -> tablero.colocarPieza(1, 1, 'O'));
+                () -> tablero.colocarPieza(1, 1, '+'));
+    }
+
+    @Test
+    void siguienteTurno_alInicio_esX() {
+        Tablero tablero = new Tablero();
+
+        assertEquals('X', tablero.siguienteTurno());
+    }
+
+    @Test
+    void siguienteTurno_despuesDeX_esO() {
+        Tablero tablero = new Tablero();
+        tablero.colocarPieza(0, 0, 'X');
+
+        assertEquals('+', tablero.siguienteTurno());
+    }
+
+    @Test
+    void siguienteTurno_despuesDeO_esX() {
+        Tablero tablero = new Tablero();
+        tablero.colocarPieza(0, 0, 'X');
+        tablero.colocarPieza(0, 1, '+');
+
+        assertEquals('X', tablero.siguienteTurno());
     }
 }
