@@ -22,4 +22,8 @@ public class Tablero {
         }
         return 'X';
     }
+
+    public Character ganador() {
+        return null;
+    }
 }
