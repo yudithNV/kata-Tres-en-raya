@@ -23,7 +23,7 @@ public class Tablero {
         return 'X';
     }
 
-    public Character ganador() {
+        public Character ganador() {
         for (int fila = 0; fila < 3; fila++) {
             char primera = casillas[fila][0];
             if (primera != '\0'
@@ -39,6 +39,17 @@ public class Tablero {
                     && primera == casillas[2][columna]) {
                 return primera;
             }
+        }
+        char centro = casillas[1][1];
+        if (centro != '\0'
+                && centro == casillas[0][0]
+                && centro == casillas[2][2]) {
+            return centro;
+        }
+        if (centro != '\0'
+                && centro == casillas[0][2]
+                && centro == casillas[2][0]) {
+            return centro;
         }
         return null;
     }
