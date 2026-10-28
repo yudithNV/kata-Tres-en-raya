@@ -105,4 +105,15 @@ class TableroTest {
 
         assertEquals('X', tablero.ganador());
     }
+    @Test
+    void hayGanador_diagonalSecundariaX_gana() {
+        Tablero tablero = new Tablero();
+        tablero.colocarPieza(0, 2, 'X');
+        tablero.colocarPieza(0, 0, '+');
+        tablero.colocarPieza(1, 1, 'X');
+        tablero.colocarPieza(0, 1, '+');
+        tablero.colocarPieza(2, 0, 'X');
+
+        assertEquals('X', tablero.ganador());
+    }
 }
